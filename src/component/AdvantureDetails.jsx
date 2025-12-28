@@ -43,9 +43,18 @@ const AdvantureDetails = () => {
       {/* Title & Meta */}
       <h1 className="text-3xl md:text-4xl font-bold mb-3">{title}</h1>
 
-      <p className="text-gray-600 mb-6">
-        📍 {location} &nbsp;|&nbsp; ⏱ {duration} &nbsp;|&nbsp; ⚡{" "}
-        {adventureLevel}
+      <p className="flex flex-wrap items-center gap-4 text-sm mb-6 text-gray-500">
+        <span className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full">
+          📍 <span className="font-medium text-gray-700">{location}</span>
+        </span>
+
+        <span className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full">
+          ⏱ <span className="font-medium text-gray-700">{duration}</span>
+        </span>
+
+        <span className="flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1 rounded-full">
+          ⚡ <span className="font-medium">{adventureLevel}</span>
+        </span>
       </p>
 
       <p className="text-gray-700 leading-relaxed mb-10">{shortDescription}</p>
