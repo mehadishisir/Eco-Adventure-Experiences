@@ -61,35 +61,59 @@ const AdvantureDetails = () => {
 
       {/* Info Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        <div className="bg-base-200 p-4 rounded-xl">
-          <h3 className="font-semibold">Category</h3>
-          <p className="text-sm text-gray-600">{category}</p>
+        {/* Category */}
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+            Category
+          </p>
+          <h3 className="text-lg font-semibold text-gray-800">{category}</h3>
         </div>
 
-        <div className="bg-base-200 p-4 rounded-xl">
-          <h3 className="font-semibold">Cost</h3>
-          <p className="text-sm text-gray-600">$ {cost}</p>
+        {/* Cost */}
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+            Cost
+          </p>
+          <h3 className="text-lg font-semibold text-green-600">$ {cost}</h3>
         </div>
 
-        <div className="bg-base-200 p-4 rounded-xl">
-          <h3 className="font-semibold">Group Size</h3>
-          <p className="text-sm text-gray-600">Max {maxGroupSize} people</p>
+        {/* Group Size */}
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+            Group Size
+          </p>
+          <h3 className="text-lg font-semibold text-gray-800">
+            Max {maxGroupSize} People
+          </h3>
         </div>
 
-        <div className="bg-base-200 p-4 rounded-xl">
-          <h3 className="font-semibold">Availability</h3>
-          <p className="text-sm text-gray-600">{bookingAvailability}</p>
+        {/* Availability */}
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+            Availability
+          </p>
+          <h3 className="text-lg font-semibold text-blue-600">
+            {bookingAvailability}
+          </h3>
         </div>
       </div>
 
       {/* Eco Friendly Features */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">🌿 Eco-Friendly Features</h2>
-        <div className="flex flex-wrap gap-2">
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-5 flex items-center gap-2">
+          🌿 Eco-Friendly Features
+        </h2>
+
+        <div className="flex flex-wrap gap-3">
           {ecoFriendlyFeatures.map((feature, index) => (
             <span
               key={index}
-              className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-700 border border-green-200"
+              className="px-4 py-1.5 text-sm font-medium rounded-full
+        bg-green-50/80 text-green-700
+        border border-green-200
+        backdrop-blur-sm
+        hover:bg-green-100 hover:scale-105
+        transition"
             >
               {feature}
             </span>
@@ -98,28 +122,53 @@ const AdvantureDetails = () => {
       </section>
 
       {/* Included Items */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">🎒 Included Items</h2>
-        <ul className="list-disc list-inside text-gray-700">
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-5 flex items-center gap-2">
+          🎒 Included Items
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {includedItems.map((item, index) => (
-            <li key={index}>{item}</li>
+            <div
+              key={index}
+              className="bg-base-100 border border-gray-200 rounded-xl p-4
+        shadow-sm hover:shadow-md transition"
+            >
+              <p className="text-gray-700 font-medium">✓ {item}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
 
       {/* Special Instructions */}
-      <section className="mb-12">
-        <h2 className="text-xl font-semibold mb-4">⚠️ Special Instructions</h2>
-        <ul className="list-disc list-inside text-gray-700">
+      <section className="mb-14">
+        <h2 className="text-2xl font-bold mb-5 flex items-center gap-2">
+          ⚠️ Special Instructions
+        </h2>
+
+        <div className="space-y-4">
           {specialInstructions.map((item, index) => (
-            <li key={index}>{item}</li>
+            <div
+              key={index}
+              className="border-l-4 border-yellow-400
+        bg-yellow-50/60 p-4 rounded-xl"
+            >
+              <p className="text-gray-700 text-sm leading-relaxed">{item}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
 
-      {/* Action Button (logic later) */}
+      {/* Action Button */}
       <div className="text-center">
-        <button className="btn btn-success btn-lg">💬 Talk with Expert</button>
+        <button
+          className="btn btn-lg bg-green-600 hover:bg-green-700 border-0
+    text-white px-10 rounded-full
+    shadow-lg hover:shadow-xl
+    transition-transform hover:scale-105"
+        >
+          💬 Talk with Expert
+        </button>
       </div>
     </div>
   );
