@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData, useParams } from "react-router";
+import Modal from "./Modal";
 
 const AdvantureDetails = () => {
+  const [modal, showModal] = useState(false);
   const data = useLoaderData();
   const { id } = useParams();
 
   const advanture = data.find((advanture) => advanture.id === parseInt(id));
+  const handleTalkWithExpert = () => {
+    const now = new Date();
+    const hours = now.getHours();
+    // console.log(hours);
+    if (hours >= 10 && hours <= 20) {
+      showModal(true);
+    } else {
+      window.open("https://meet.google.com", "_blank");
+    }
+  };
 
   if (!advanture) {
     return (
@@ -57,20 +69,25 @@ const AdvantureDetails = () => {
         </span>
       </p>
 
-      <p className="text-gray-700 leading-relaxed mb-10">{shortDescription}</p>
+      <p
+        className="text-gray-800 mb-12 text-lg md:text-xl 
+              italic 
+              bg-green-50/30 p-4 rounded-xl shadow-inner"
+      >
+        {shortDescription}
+      </p>
 
       {/* Info Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {/* Category */}
-        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md ">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
             Category
           </p>
           <h3 className="text-lg font-semibold text-gray-800">{category}</h3>
         </div>
-
         {/* Cost */}
-        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md ">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
             Cost
           </p>
@@ -78,7 +95,7 @@ const AdvantureDetails = () => {
         </div>
 
         {/* Group Size */}
-        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md ">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
             Group Size
           </p>
@@ -88,7 +105,7 @@ const AdvantureDetails = () => {
         </div>
 
         {/* Availability */}
-        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+        <div className="bg-base-100 border border-gray-200 p-5 rounded-2xl shadow-sm hover:shadow-md ">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
             Availability
           </p>
@@ -153,7 +170,7 @@ const AdvantureDetails = () => {
               className="border-l-4 border-yellow-400
         bg-yellow-50/60 p-4 rounded-xl"
             >
-              <p className="text-gray-700 text-sm leading-relaxed">{item}</p>
+              <p className="text-gray-700 text-sm">{item}</p>
             </div>
           ))}
         </div>
@@ -162,6 +179,7 @@ const AdvantureDetails = () => {
       {/* Action Button */}
       <div className="text-center">
         <button
+          onClick={handleTalkWithExpert}
           className="btn btn-lg bg-green-600 hover:bg-green-700 border-0
     text-white px-10 rounded-full
     shadow-lg hover:shadow-xl
@@ -169,6 +187,7 @@ const AdvantureDetails = () => {
         >
           💬 Talk with Expert
         </button>
+        {modal && <Modal onClose={() => showModal(false)}></Modal>}
       </div>
     </div>
   );
