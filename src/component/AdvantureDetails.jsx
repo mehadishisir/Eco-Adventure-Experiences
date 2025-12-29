@@ -13,9 +13,9 @@ const AdvantureDetails = () => {
     const hours = now.getHours();
     // console.log(hours);
     if (hours >= 10 && hours <= 20) {
-      showModal(true);
-    } else {
       window.open("https://meet.google.com", "_blank");
+    } else {
+      showModal(true);
     }
   };
 
