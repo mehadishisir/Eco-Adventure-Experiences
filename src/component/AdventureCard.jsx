@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AdventureCard = ({ adventures }) => {
   const { id, title, image, ecoFriendlyFeatures } = adventures;
 
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true }); // animation duration 800ms, only once
+  }, []);
+
   return (
-    <div className="card bg-base-100 shadow-md hover:shadow-xl transition">
-      <figure className="h-56">
+    <div
+      data-aos="fade-up"
+      data-aos-delay="100"
+      data-aos-easing="ease-in-out"
+      className="card bg-base-100 shadow-md hover:shadow-xl transition-transform hover:scale-105"
+    >
+      <figure className="h-56 overflow-hidden rounded-t-xl">
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </figure>
 
       <div className="card-body">
-        <h2 className="card-title text-xl font-bold text-gray-800 hover:text-green-600  transition">
+        <h2 className="card-title text-xl font-bold text-gray-800 hover:text-green-600 transition">
           {title}
         </h2>
 
