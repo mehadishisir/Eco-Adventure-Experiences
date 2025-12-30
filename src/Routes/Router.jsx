@@ -3,6 +3,8 @@ import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layout/HomeLayout";
 import Home from "../pages/Home";
 import AdvantureDetails from "../component/AdvantureDetails";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const Router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const Router = createBrowserRouter([
         path: "/adventure/:id",
         element: <AdvantureDetails></AdvantureDetails>,
         loader: () => fetch("/adventures.json"),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },
