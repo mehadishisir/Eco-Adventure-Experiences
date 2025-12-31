@@ -5,9 +5,10 @@ import { authContext } from "../Auth/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   const { loginUser, googleLogin } = useContext(authContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from || "/";
+  const navigate = useNavigate();
+  console.log("Login page location:", location);
   const [error, setError] = useState("");
 
   const handleLogin = (e) => {
@@ -19,7 +20,7 @@ const Login = () => {
     loginUser(email, password)
       .then(() => {
         toast.success("Login successful");
-        navigate(from, { replace: true });
+        navigate(location.state ? location.state : "/");
       })
       .catch(() => {
         setError("Invalid email or password");
@@ -32,7 +33,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("Google login successful");
-        navigate(from, { replace: true });
+        navigate(location.state ? location.state : "/");
       })
       .catch(() => {
         toast.error("Google login failed");
@@ -76,12 +77,13 @@ const Login = () => {
             <p className="text-red-500 text-sm animate-pulse">{error}</p>
           )}
 
-          <button
+          <Link
+            to="/"
             type="submit"
             className="btn w-full bg-green-600 hover:bg-green-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-transform hover:scale-105"
           >
             Login
-          </button>
+          </Link>
         </form>
 
         <div className="divider">OR</div>
@@ -96,12 +98,12 @@ const Login = () => {
 
         <p className="text-center text-sm mt-4 text-gray-600">
           New here?{" "}
-          <Link
+          <button
             to="/register"
             className="link link-primary hover:text-green-600"
           >
             Create an account
-          </Link>
+          </button>
         </p>
       </div>
     </div>
