@@ -1,7 +1,10 @@
 import { NavLink } from "react-router";
 import leafImg from "../assets/leaf_692057.png";
+import { useContext } from "react";
+import { authContext } from "../Auth/AuthProvider";
 
 const Navbar = () => {
+  const { user, logoutUser } = useContext(authContext);
   return (
     <div className="navbar bg-base-100 shadow-md px-4 md:px-10 relative z-50">
       {/* Navbar Start */}
@@ -60,14 +63,6 @@ const Navbar = () => {
                   </li>
                 </ul>
               </details>
-            </li>
-            <li>
-              <NavLink
-                to="/login"
-                className="btn btn-sm bg-green-600 hover:bg-green-700 text-white w-full mt-2"
-              >
-                Login
-              </NavLink>
             </li>
           </ul>
         </div>
@@ -134,13 +129,24 @@ const Navbar = () => {
       </div>
 
       {/* Navbar End */}
-      <div className="navbar-end hidden lg:flex">
-        <NavLink
-          to="/login"
-          className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"
-        >
-          Login
-        </NavLink>
+      <div className="navbar-end flex items-center">
+        {" "}
+        {user ? (
+          <NavLink
+            to="/login"
+            onClick={logoutUser}
+            className="btn btn-sm  bg-green-600 hover:bg-green-700 text-white  mt-2"
+          >
+            Logout
+          </NavLink>
+        ) : (
+          <NavLink
+            to="/login"
+            className="btn btn-sm bg-green-600 hover:bg-green-700 text-white  mt-2"
+          >
+            Login
+          </NavLink>
+        )}
       </div>
     </div>
   );
