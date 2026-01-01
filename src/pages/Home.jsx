@@ -3,6 +3,7 @@ import Banner from "../component/Banner";
 import { useLoaderData } from "react-router";
 import AdventureCard from "../component/AdventureCard";
 import WhyChooseEco from "../component/WhyChooseEco";
+import Testimonials from "../component/Testimonials";
 
 const Home = () => {
   const data = useLoaderData();
@@ -24,6 +25,9 @@ const Home = () => {
         </div>
         <section className="text-center mt-12">
           <WhyChooseEco></WhyChooseEco>
+        </section>
+        <section className="text-center mt-12">
+          <Testimonials></Testimonials>
         </section>
       </div>
     </div>
