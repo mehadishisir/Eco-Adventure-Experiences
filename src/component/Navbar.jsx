@@ -1,10 +1,20 @@
 import { NavLink } from "react-router";
 import leafImg from "../assets/leaf_692057.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../Auth/AuthProvider";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(authContext);
+  const [adventures, setAdventures] = useState([]);
+
+  // Fetch adventures dynamically
+  useEffect(() => {
+    fetch("/adventures.json")
+      .then((res) => res.json())
+      .then((data) => setAdventures(data))
+      .catch((err) => console.error("Failed to fetch adventures:", err));
+  }, []);
+
   return (
     <div className="navbar bg-base-100 shadow-md px-4 md:px-10 relative z-50">
       {/* Navbar Start */}
@@ -29,38 +39,16 @@ const Navbar = () => {
                   Adventures
                 </summary>
                 <ul className="p-2 bg-base-100 rounded-box mt-1">
-                  <li>
-                    <NavLink
-                      to="/adventures/mountain-treks"
-                      className="font-medium block px-2 py-1"
-                    >
-                      Mountain Treks
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/adventures/ocean-dives"
-                      className="font-medium block px-2 py-1"
-                    >
-                      Ocean Dives
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/adventures/wildlife-safaris"
-                      className="font-medium block px-2 py-1"
-                    >
-                      Wildlife Safaris
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/adventures/forest-expeditions"
-                      className="font-medium block px-2 py-1"
-                    >
-                      Forest Expeditions
-                    </NavLink>
-                  </li>
+                  {adventures.map((adv) => (
+                    <li key={adv.id}>
+                      <NavLink
+                        to={`/adventure/${adv.id}`}
+                        className="font-medium block px-2 py-1"
+                      >
+                        {adv.title}
+                      </NavLink>
+                    </li>
+                  ))}
                 </ul>
               </details>
             </li>
@@ -82,46 +70,26 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-
-          {/* Desktop clickable submenu using <details> */}
           <li>
             <details className="cursor-pointer">
               <summary className="font-medium flex items-center gap-1">
                 Adventures
               </summary>
               <ul className="p-2 bg-base-100 rounded-box mt-1 absolute shadow-md min-w-[180px]">
-                <li>
-                  <NavLink
-                    to="/adventures/mountain-treks"
-                    className="font-medium hover:text-green-600 block px-2 py-1"
-                  >
-                    Mountain Treks
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/adventures/ocean-dives"
-                    className="font-medium hover:text-green-600 block px-2 py-1"
-                  >
-                    Ocean Dives
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/adventures/wildlife-safaris"
-                    className="font-medium hover:text-green-600 block px-2 py-1"
-                  >
-                    Wildlife Safaris
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/adventures/forest-expeditions"
-                    className="font-medium hover:text-green-600 block px-2 py-1"
-                  >
-                    Forest Expeditions
-                  </NavLink>
-                </li>
+                {adventures.map((adv) => (
+                  <li key={adv.id}>
+                    <NavLink
+                      to={`/adventure/${adv.id}`}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "font-medium text-green-600 block px-2 py-1"
+                          : "font-medium block px-2 py-1"
+                      }
+                    >
+                      {adv.title}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </details>
           </li>
@@ -130,19 +98,18 @@ const Navbar = () => {
 
       {/* Navbar End */}
       <div className="navbar-end flex items-center">
-        {" "}
         {user ? (
           <NavLink
             to="/login"
             onClick={logoutUser}
-            className="btn btn-sm  bg-green-600 hover:bg-green-700 text-white  mt-2"
+            className="btn btn-sm bg-green-600 hover:bg-green-700 text-white mt-2"
           >
             Logout
           </NavLink>
         ) : (
           <NavLink
             to="/login"
-            className="btn btn-sm bg-green-600 hover:bg-green-700 text-white  mt-2"
+            className="btn btn-sm bg-green-600 hover:bg-green-700 text-white mt-2"
           >
             Login
           </NavLink>
