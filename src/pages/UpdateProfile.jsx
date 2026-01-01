@@ -22,7 +22,7 @@ const UpdateProfile = () => {
       .then(() => {
         toast.success("Profile updated successfully!");
         setLoading(false);
-        navigate("/my-profile"); // back to profile page
+        navigate("/profile"); // back to profile page
       })
       .catch((err) => {
         toast.error("Failed to update profile");

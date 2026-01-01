@@ -52,6 +52,18 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
+
+            {/* Mobile Profile button */}
+            {user && (
+              <li>
+                <NavLink
+                  to="/profile"
+                  className="font-medium block px-2 py-1 text-green-600"
+                >
+                  Profile
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
 
@@ -63,7 +75,7 @@ const Navbar = () => {
       </div>
 
       {/* Navbar Center - Desktop */}
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex items-center gap-4">
         <ul className="menu menu-horizontal gap-4">
           <li>
             <NavLink to="/" className="font-medium">
@@ -92,6 +104,14 @@ const Navbar = () => {
                 ))}
               </ul>
             </details>
+          </li>
+          <li>
+            {/* Desktop Profile button */}
+            {user && (
+              <NavLink to="/profile" className="  text-black ml-4">
+                Profile
+              </NavLink>
+            )}
           </li>
         </ul>
       </div>
