@@ -1,16 +1,45 @@
-# React + Vite
+# Eco Adventure Experience 🌿
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Eco Adventure Experience** is a responsive, modern React web application designed for adventure enthusiasts. Users can explore eco-friendly adventures, view detailed adventure info, book trips, and manage their profiles securely with Firebase Authentication.
 
-Currently, two official plugins are available:
+**Live Demo:** [https://eco-adventure-experience-d8e4a.web.app/](https://eco-adventure-experience-d8e4a.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🔥 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- User Authentication with Firebase (Login, Register, Forgot Password)
+- Private Routes for profile & adventure details
+- Update profile (name & photo)
+- Adventure categories: Mountain Treks, Ocean Dives, Wildlife Safaris, Forest Expeditions
+- Detailed adventure page with:
+  - Location, Duration, Adventure Level
+  - Cost & Group size
+  - Eco-Friendly Features
+  - Included Items & Special Instructions
+- Talk with Expert (Google Meet link based on time)
+- Responsive Navbar & Mobile-friendly dropdown
+- Dynamic adventure list in Navbar
+- Custom Carousel with Explore buttons linking to adventure details
+- 404 Not Found page
+- Dark/Light Theme Support (DaisyUI)
+- Toast notifications for profile updates
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+- **Frontend:** React.js, Vite, Tailwind CSS, DaisyUI, Animate.css
+- **Backend:** Firebase Authentication
+- **Hosting:** Firebase Hosting
+- **Version Control:** Git & GitHub
+
+---
+
+## 🚀 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/eco-adventure-experience.git
+   cd eco-adventure-experience
+   ```
