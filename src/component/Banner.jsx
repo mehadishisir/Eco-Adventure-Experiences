@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import mountainImg from "../assets/mountain.jpg";
 import seaImg from "../assets/sea.jpg";
 import wildImg from "../assets/wild.jpg";
@@ -27,9 +28,12 @@ const Banner = () => {
               <p className="text-base md:text-lg text-gray-200 mb-6 animate__animated animate__fadeInUp animate__delay-1s">
                 Experience eco-friendly mountain treks guided by nature experts.
               </p>
-              <button className="btn bg-green-600 hover:bg-green-700 border-0 animate__animated animate__zoomIn animate__delay-2s">
-                Explore Treks
-              </button>
+
+              <Link to="/adventure/1">
+                <button className="btn bg-green-600 hover:bg-green-700 border-0 animate__animated animate__zoomIn animate__delay-2s">
+                  Explore Treks
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -56,9 +60,12 @@ const Banner = () => {
                 Discover vibrant marine life through responsible ocean
                 adventures.
               </p>
-              <button className="btn bg-green-600 hover:bg-green-700 border-0">
-                Explore Ocean
-              </button>
+
+              <Link to="/adventure/2">
+                <button className="btn bg-green-600 hover:bg-green-700 border-0">
+                  Explore Ocean
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -84,9 +91,12 @@ const Banner = () => {
               <p className="text-base md:text-lg text-gray-200 mb-6">
                 Ethical wildlife safaris that respect nature and its creatures.
               </p>
-              <button className="btn bg-green-600 hover:bg-green-700 border-0">
-                View Safaris
-              </button>
+
+              <Link to="/adventure/3">
+                <button className="btn bg-green-600 hover:bg-green-700 border-0">
+                  View Safaris
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -112,9 +122,12 @@ const Banner = () => {
               <p className="text-base md:text-lg text-gray-200 mb-6">
                 Calm, sustainable forest expeditions guided by local experts.
               </p>
-              <button className="btn bg-green-600 hover:bg-green-700 border-0">
-                Explore Forests
-              </button>
+
+              <Link to="/adventure/4">
+                <button className="btn bg-green-600 hover:bg-green-700 border-0">
+                  Explore Forests
+                </button>
+              </Link>
             </div>
           </div>
 
