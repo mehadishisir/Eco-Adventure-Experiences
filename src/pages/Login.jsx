@@ -74,13 +74,13 @@ const Login = () => {
             <p className="text-red-500 text-sm animate-pulse">{error}</p>
           )}
 
-          <Link
+          <button
             to="/"
             type="submit"
             className="btn w-full bg-green-600 hover:bg-green-700 text-white rounded-xl shadow-lg hover:shadow-xl transition-transform hover:scale-105"
           >
             Login
-          </Link>
+          </button>
         </form>
 
         <div className="divider">OR</div>
@@ -95,12 +95,12 @@ const Login = () => {
 
         <p className="text-center text-sm mt-4 text-gray-600">
           New here?{" "}
-          <button
+          <Link
             to="/register"
             className="link link-primary hover:text-green-600"
           >
             Create an account
-          </button>
+          </Link>
         </p>
       </div>
     </div>
